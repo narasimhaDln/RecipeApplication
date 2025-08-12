@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon Backend/server.js",
     "start": "cross-env NODE_ENV=production node Backend/server.js",
-    "build": "npm install && npm install --prefix frontend"
+    "build": "echo 'No build step needed for static frontend'"
   },
   "keywords": [],
   "author": "",

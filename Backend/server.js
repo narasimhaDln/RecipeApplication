@@ -1,8 +1,10 @@
+// Backend/server.js
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
 
 // Import routes
 import userRoutes from './routes/user.routes.js';
@@ -19,7 +21,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Fix __dirname in ESM
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(express.json());
@@ -28,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Routes
+// API Routes
 app.use('/api/users', userRoutes);
 app.use('/api/recipes', recipeRoutes);
 app.use('/api/recipes', ratingRoutes);
@@ -36,13 +39,13 @@ app.use('/api/shopping', shoppingRoutes);
 app.use('/api/planner', plannerRoutes);
 app.use('/api/recipes', commentRoutes);
 
-// Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
-  });
-}
+// Serve frontend (static HTML/CSS/JS)
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Default route to serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
