@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HySclar - Advanced Recipe Platform</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <i class="fas fa-utensils"></i>
+     Recipe
+    </div>
+    <nav class="nav" id="nav">
+      <button data-view="searchView" class="nav-btn active">
+        <i class="fas fa-search"></i> Search
+      </button>
+      <button data-view="favoritesView" class="nav-btn">
+        <i class="fas fa-heart"></i> Favorites
+      </button>
+      <button data-view="recentView" class="nav-btn">
+        <i class="fas fa-clock"></i> Recent
+      </button>
+      <button data-view="recsView" class="nav-btn">
+        <i class="fas fa-star"></i> Recommended
+      </button>
+      <button data-view="plannerView" class="nav-btn">
+        <i class="fas fa-calendar-alt"></i> Planner
+      </button>
+      <button data-view="shoppingView" class="nav-btn">
+        <i class="fas fa-shopping-cart"></i> Shopping
+      </button>
+      <button data-view="collectionsView" class="nav-btn">
+        <i class="fas fa-folder"></i> Collections
+      </button>
+      <button data-view="profileView" class="nav-btn">
+        <i class="fas fa-user"></i> Profile
+      </button>
+      <button data-view="dashboardView" class="nav-btn">
+        <i class="fas fa-chart-bar"></i> Dashboard
+      </button>
+      <button id="logoutBtn" class="nav-btn danger" title="Logout">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Auth Section -->
+    <section id="authView" class="view">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2><i class="fas fa-utensils"></i> Welcome to HySclar</h2>
+          <p>Discover, plan, and cook amazing recipes with AI-powered recommendations</p>
+        </div>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="loginTab">Login</button>
+          <button class="tab-btn" data-tab="registerTab">Register</button>
+        </div>
+        <div class="tab-content">
+          <form id="loginTab" class="tab active">
+            <div class="field">
+              <label><i class="fas fa-envelope"></i> Email</label>
+              <input type="email" id="loginEmail" required />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <input type="password" id="loginPassword" required />
+            </div>
+            <button type="submit" class="btn primary full">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+          </form>
+          <form id="registerTab" class="tab">
+            <div class="field">
+              <label><i class="fas fa-user"></i> Username</label>
+              <input type="text" id="regUsername" required />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-envelope"></i> Email</label>
+              <input type="email" id="regEmail" required />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <input type="password" id="regPassword" required />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-leaf"></i> Dietary Preferences (comma separated)</label>
+              <input type="text" id="regDietPrefs" placeholder="vegetarian, vegan, gluten-free" />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-exclamation-triangle"></i> Allergies (comma separated)</label>
+              <input type="text" id="regAllergies" placeholder="peanut, gluten, dairy" />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-user-graduate"></i> Skill Level</label>
+              <select id="regSkill">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+            <button type="submit" class="btn primary full">
+              <i class="fas fa-user-plus"></i> Create account
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Search -->
+    <section id="searchView" class="view active">
+      <div class="search-header">
+        <h2><i class="fas fa-search"></i> Discover Recipes</h2>
+        <p>Find the perfect recipe with advanced filters and AI recommendations</p>
+      </div>
+      
+      <form id="searchForm" class="search-form">
+        <div class="search-main">
+          <div class="search-input-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input id="q" placeholder="Search recipes (e.g., pasta, salad, chicken)" required />
+            <button type="submit" class="search-btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="advanced-filters">
+          <div class="filter-group">
+            <label><i class="fas fa-globe"></i> Cuisine</label>
+            <select id="cuisine">
+              <option value="">Any Cuisine</option>
+              <option value="italian">Italian</option>
+              <option value="indian">Indian</option>
+              <option value="mexican">Mexican</option>
+              <option value="chinese">Chinese</option>
+              <option value="french">French</option>
+              <option value="japanese">Japanese</option>
+              <option value="thai">Thai</option>
+              <option value="mediterranean">Mediterranean</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-utensils"></i> Meal Type</label>
+            <select id="mealType">
+              <option value="">Any Meal</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="main course">Main Course</option>
+              <option value="dessert">Dessert</option>
+              <option value="snack">Snack</option>
+              <option value="appetizer">Appetizer</option>
+              <option value="salad">Salad</option>
+              <option value="soup">Soup</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-clock"></i> Max Time</label>
+            <input id="maxTime" type="number" min="1" placeholder="Minutes" />
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-signal"></i> Difficulty</label>
+            <select id="difficulty">
+              <option value="">Any Level</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      
+      <div class="search-actions">
+        <button id="generateShoppingBtn" class="btn">
+          <i class="fas fa-shopping-cart"></i> Generate Shopping List from Selected
+        </button>
+        <button id="saveCollectionBtn" class="btn">
+          <i class="fas fa-folder-plus"></i> Save to Collection
+        </button>
+        <button id="clearFiltersBtn" class="btn">
+          <i class="fas fa-times"></i> Clear Filters
+        </button>
+      </div>
+      
+      <div class="search-stats">
+        <span id="resultsCount">0</span> recipes found
+      </div>
+      
+      <div id="results" class="grid"></div>
+    </section>
+
+    <!-- Favorites -->
+    <section id="favoritesView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-heart"></i> Your Favorites</h2>
+        <div class="header-actions">
+          <button id="sortFavoritesBtn" class="btn">
+            <i class="fas fa-sort"></i> Sort
+          </button>
+          <button id="exportFavoritesBtn" class="btn">
+            <i class="fas fa-download"></i> Export
+          </button>
+        </div>
+      </div>
+      <div id="favorites" class="grid"></div>
+    </section>
+
+    <!-- Recent -->
+    <section id="recentView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-clock"></i> Recently Viewed</h2>
+        <button id="clearRecentBtn" class="btn danger">
+          <i class="fas fa-trash"></i> Clear History
+        </button>
+      </div>
+      <div id="recent" class="grid"></div>
+    </section>
+
+    <!-- Recommendations -->
+    <section id="recsView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-star"></i> Recommended For You</h2>
+        <p>Based on your preferences and cooking history</p>
+      </div>
+      <div id="recs" class="grid"></div>
+    </section>
+
+    <!-- Enhanced Planner -->
+    <section id="plannerView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-calendar-alt"></i> Meal Planner</h2>
+        <div class="header-actions">
+          <button id="addToPlannerBtn" class="btn primary">
+            <i class="fas fa-plus"></i> Add Recipe
+          </button>
+          <button id="generatePlanBtn" class="btn">
+            <i class="fas fa-magic"></i> Auto Plan
+          </button>
+        </div>
+      </div>
+      
+      <div class="planner-calendar">
+        <div class="calendar-header">
+          <button id="prevWeek" class="btn"><i class="fas fa-chevron-left"></i></button>
+          <h3 id="weekDisplay">This Week</h3>
+          <button id="nextWeek" class="btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div id="planner" class="calendar-grid"></div>
+      </div>
+    </section>
+
+    <!-- Enhanced Shopping List -->
+    <section id="shoppingView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-shopping-cart"></i> Shopping List</h2>
+        <div class="header-actions">
+          <button id="refreshShoppingBtn" class="btn">
+            <i class="fas fa-sync"></i> Refresh
+          </button>
+          <button id="updateShoppingBtn" class="btn primary">
+            <i class="fas fa-save"></i> Update
+          </button>
+          <button id="clearShoppingBtn" class="btn danger">
+            <i class="fas fa-trash"></i> Clear
+          </button>
+        </div>
+      </div>
+      
+      <div class="shopping-stats">
+        <div class="stat-card">
+          <i class="fas fa-list"></i>
+          <div>
+            <span class="stat-number" id="totalItems">0</span>
+            <span class="stat-label">Total Items</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <span class="stat-number" id="purchasedItems">0</span>
+            <span class="stat-label">Purchased</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-percentage"></i>
+          <div>
+            <span class="stat-number" id="progressPercent">0%</span>
+            <span class="stat-label">Progress</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="shopping-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+      
+      <div class="shopping-filters">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-list"></i> All Items
+        </button>
+        <button class="filter-btn" data-filter="pending">
+          <i class="fas fa-clock"></i> Pending
+        </button>
+        <button class="filter-btn" data-filter="purchased">
+          <i class="fas fa-check"></i> Purchased
+        </button>
+      </div>
+      
+      <div id="shopping" class="shopping-list"></div>
+    </section>
+
+    <!-- Collections -->
+    <section id="collectionsView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-folder"></i> Recipe Collections</h2>
+        <button id="createCollectionBtn" class="btn primary">
+          <i class="fas fa-plus"></i> New Collection
+        </button>
+      </div>
+      <div id="collections" class="collections-grid"></div>
+    </section>
+
+    <!-- Enhanced Profile -->
+    <section id="profileView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-user"></i> Profile & Preferences</h2>
+      </div>
+      
+      <div class="profile-grid">
+        <div class="profile-section">
+          <h3><i class="fas fa-user-edit"></i> Personal Info</h3>
+          <form id="profileForm" class="card form">
+            <div class="field">
+              <label><i class="fas fa-user"></i> Username</label>
+              <input id="pfUsername" />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-envelope"></i> Email</label>
+              <input id="pfEmail" type="email" />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-lock"></i> New Password (optional)</label>
+              <input id="pfPassword" type="password" />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-leaf"></i> Dietary Preferences (comma separated)</label>
+              <input id="pfDiet" />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-exclamation-triangle"></i> Allergies (comma separated)</label>
+              <input id="pfAllergies" />
+            </div>
+            <div class="field">
+              <label><i class="fas fa-user-graduate"></i> Skill Level</label>
+              <select id="pfSkill">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+            <button class="btn primary" type="submit">
+              <i class="fas fa-save"></i> Save Changes
+            </button>
+          </form>
+        </div>
+
+        <div class="profile-section">
+          <h3><i class="fas fa-carrot"></i> Ingredient Preferences</h3>
+          <form id="ingredientsForm" class="card form">
+            <div id="ingredientsList" class="ingredients"></div>
+            <div class="inline">
+              <input id="ingName" placeholder="Ingredient name" />
+              <select id="ingPref">
+                <option value="like">Like</option>
+                <option value="neutral">Neutral</option>
+                <option value="dislike">Dislike</option>
+              </select>
+              <button id="addIngredientBtn" class="btn" type="button">
+                <i class="fas fa-plus"></i> Add
+              </button>
+            </div>
+            <div class="inline">
+              <button id="saveIngredientsBtn" class="btn primary" type="button">
+                <i class="fas fa-save"></i> Save Ingredients
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Dashboard -->
+    <section id="dashboardView" class="view">
+      <div class="section-header">
+        <h2><i class="fas fa-chart-bar"></i> Dashboard</h2>
+        <p>Your cooking journey at a glance</p>
+      </div>
+      
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <div class="card-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="card-content">
+            <div class="card-number" id="viewedCount">0</div>
+            <div class="card-label">Recipes Viewed</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div class="card-content">
+            <div class="card-number" id="favoritedCount">0</div>
+            <div class="card-label">Favorites</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="card-content">
+            <div class="card-number" id="ratedCount">0</div>
+            <div class="card-label">Recipes Rated</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon">
+            <i class="fas fa-comment"></i>
+          </div>
+          <div class="card-content">
+            <div class="card-number" id="commentedCount">0</div>
+            <div class="card-label">Comments</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dashboard-charts">
+        <div class="chart-section">
+          <h3>Recent Activity</h3>
+          <div id="recentActivity" class="activity-list"></div>
+        </div>
+        
+        <div class="chart-section">
+          <h3>Top Cuisines</h3>
+          <div id="cuisineStats" class="cuisine-chart"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Recipe Modal -->
+    <div id="recipeModal" class="modal hidden">
+      <div class="modal-content">
+        <button id="closeModal" class="icon-btn" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="recipeDetail"></div>
+      </div>
+    </div>
+
+    <!-- Collection Modal -->
+    <div id="collectionModal" class="modal hidden">
+      <div class="modal-content">
+        <h3><i class="fas fa-folder-plus"></i> Create Collection</h3>
+        <form id="collectionForm">
+          <div class="field">
+            <label>Collection Name</label>
+            <input id="collectionName" required />
+          </div>
+          <div class="field">
+            <label>Description (optional)</label>
+            <textarea id="collectionDesc"></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="button" id="cancelCollection" class="btn">Cancel</button>
+            <button type="submit" class="btn primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

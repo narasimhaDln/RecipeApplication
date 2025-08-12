@@ -1,0 +1,49 @@
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import path from 'path';
+import dotenv from 'dotenv';
+
+// Import routes
+import userRoutes from './routes/user.routes.js';
+import recipeRoutes from './routes/recipe.routes.js';
+import ratingRoutes from './routes/rating.routes.js';
+import shoppingRoutes from './routes/shapping.routes.js';
+import plannerRoutes from './routes/planner.routes.js';
+import commentRoutes from './routes/commet.routes.js';
+
+// Load environment variables
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT || 5000;
+
+// Fix __dirname in ESM
+const __dirname = path.resolve();
+
+// Middleware
+app.use(express.json());
+app.use(cors({ origin: '*' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Routes
+app.use('/api/users', userRoutes);
+app.use('/api/recipes', recipeRoutes);
+app.use('/api/recipes', ratingRoutes);
+app.use('/api/shopping', shoppingRoutes);
+app.use('/api/planner', plannerRoutes);
+app.use('/api/recipes', commentRoutes);
+
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+  });
+}
+
+app.listen(port, () => {
+  console.log(`✅ Server running on port ${port}`);
+});
