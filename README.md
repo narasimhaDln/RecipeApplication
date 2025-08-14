@@ -49,6 +49,7 @@ RecipiApplication/
 │ └── assets/ # images, icons, logos
 │
 ├── .gitignore
+|\_\_.env
 ├── package.json # (Root if monorepo deployment)
 ├── package-lock.json
 ├── README.md

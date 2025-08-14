@@ -5,6 +5,8 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+// Load environment variables
+dotenv.config();
 import './config/db.config.js';
 // Import routes
 import userRoutes from './routes/user.routes.js';
@@ -13,9 +15,6 @@ import ratingRoutes from './routes/rating.routes.js';
 import shoppingRoutes from './routes/shapping.routes.js';
 import plannerRoutes from './routes/planner.routes.js';
 import commentRoutes from './routes/commet.routes.js';
-
-// Load environment variables
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;

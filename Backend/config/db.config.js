@@ -20,6 +20,8 @@ db.connect((err) => {
     console.error('Database connection failed:', err.message);
     process.exit(1);
   }
+  console.log('DB HOST from .env:', process.env.DB_HOST);
+
   console.log('MySQL Connected');
 });
 
