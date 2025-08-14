@@ -99,6 +99,7 @@ cd RecipeApplication
 
 cd backend
 npm install
+
 3️⃣ Setup Environment Variables (.env)
 
 PORT=5000
@@ -107,13 +108,15 @@ DB_USER=root
 DB_PASSWORD=yourpassword
 DB_NAME=recipe_db
 SPOONACULAR_API_KEY=your_api_key
+
 4️⃣ Run MySQL Schema
 
 mysql -u root -p recipe_db < schema.sql
 
-5️⃣ Start the Backend Server
 
+5️⃣ Start the Backend Server
 nodemon server.js
+
 6️⃣ Open the Frontend
 Simply open frontend/index.html in your browser or use Live Server.
 📡 API Endpoints (Brief Overview)
