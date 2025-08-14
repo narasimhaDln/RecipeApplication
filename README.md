@@ -1,174 +1,171 @@
-# RecipeApplication
+🍲 RecipeApplication
+A full-stack Recipe Management System that empowers users to create profiles, search for recipes, plan meals, rate dishes, post comments, and manage shopping lists. Built with a modern tech stack, it leverages the Spoonacular API for recipe data and provides a seamless, responsive user experience.
 
-# 🍲 RecipeApplication
+🌟 Features
 
-A **full-stack Recipe Management System** that allows users to create profiles, search for recipes, plan meals, rate dishes, post comments, and manage shopping lists.  
-Built with **Node.js**, **Express**, **MySQL**, and vanilla **JavaScript** for the frontend, featuring an **API-powered recipe search**.
+✅ User Authentication: Secure JWT-based login and registration system.
+✅ Recipe Search & Filters: Search recipes with filters for cuisine, meal type, preparation time, and dietary preferences using the Spoonacular API.
+✅ Meal Planner: Schedule recipes on a calendar-based meal plan for easy weekly organization.
+✅ Ratings & Reviews: Rate and review recipes to share feedback.
+✅ Comment System: Engage in recipe discussions with a commenting feature.
+✅ Shopping List Management: Generate and manage shopping lists based on selected recipes.
+✅ Caching Layer: In-memory caching for faster API responses.
+✅ Responsive Frontend: Clean, user-friendly UI built with vanilla JavaScript, HTML, and CSS.
 
----
 
-## 🌟 Features
+🛠 Tech Stack
+Frontend
 
-✅ **User Authentication** (JWT-based)  
-✅ **Recipe Search & Filters** (Powered by Spoonacular API)  
-✅ **Meal Planner** with calendar-based scheduling  
-✅ **Ratings & Reviews** for recipes  
-✅ **Comment System** for discussions  
-✅ **Shopping List Management**  
-✅ **Caching Layer** for faster API responses (using in-memory caching)  
-✅ **Responsive Frontend UI** built with HTML, CSS, and JavaScript
+HTML5: Structure for the responsive user interface.
+CSS3: Custom styles for a modern and clean design.
+Vanilla JavaScript: Dynamic client-side functionality without frameworks.
 
----
+Backend
 
-## 🛠 Tech Stack
+Node.js: Server-side runtime for handling API requests.
+Express.js: Web framework for building RESTful APIs.
+MySQL: Relational database for storing user data, meal plans, and shopping lists.
+Spoonacular API: External API for recipe search and details.
 
-### **Frontend**
+Tools & Utilities
 
-- ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-- ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+Nodemon: Auto-restarts the server during development.
+Axios: Promise-based HTTP client for API calls.
+JWT: JSON Web Tokens for secure authentication.
+Multer: Middleware for handling file uploads (e.g., recipe images).
 
-### **Backend**
 
-- ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
-- ![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
-- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
-- ![dotenv](https://img.shields.io/badge/dotenv-000000?logo=dotenv&logoColor=white)
-
-### **Tools & Utilities**
-
-- ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?logo=nodemon&logoColor=white)
-- ![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)
-- ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
-- ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)
-
----
-
-## 📂 Project Structure
-
+📂 Project Structure
 RecipeApplication/
-│
 ├── backend/
-│ ├── cache/
-│ │ └── recipe.cache.js
-│ ├── config/
-│ │ └── db.config.js
-│ ├── controllers/
-│ │ ├── comment.controllers.js
-│ │ ├── planner.controllers.js
-│ │ ├── rating.controllers.js
-│ │ ├── recipe.controllers.js
-│ │ ├── shopping.controllers.js
-│ │ └── user.controllers.js
-│ ├── middlewares/
-│ │ └── auth.middlewares.js
-│ ├── routes/
-│ │ ├── comment.routes.js
-│ │ ├── planner.routes.js
-│ │ ├── rating.routes.js
-│ │ ├── recipe.routes.js
-│ │ ├── shopping.routes.js
-│ │ └── user.routes.js
-│ ├── schema.sql
-│ └── server.js
-│
+│   ├── cache/
+│   │   └── recipe.cache.js         # In-memory caching for API responses
+│   ├── config/
+│   │   └── db.config.js           # MySQL database configuration
+│   ├── controllers/
+│   │   ├── comment.controllers.js # Handles comment-related logic
+│   │   ├── planner.controllers.js # Manages meal planning
+│   │   ├── rating.controllers.js  # Manages recipe ratings
+│   │   ├── recipe.controllers.js  # Handles recipe search and favorites
+│   │   ├── shopping.controllers.js # Manages shopping lists
+│   │   └── user.controllers.js     # Handles user authentication and profiles
+│   ├── middlewares/
+│   │   └── auth.middleware.js      # JWT authentication middleware
+│   ├── routes/
+│   │   ├── comment.routes.js       # Comment-related API routes
+│   │   ├── planner.routes.js       # Meal planner routes
+│   │   ├── rating.routes.js        # Rating routes
+│   │   ├── recipe.routes.js        # Recipe routes
+│   │   ├── shopping.routes.js      # Shopping list routes
+│   │   └── user.routes.js          # User routes
+│   ├── schema.sql                 # MySQL schema for database setup
+│   └── server.js                  # Main Express server
 ├── frontend/
-│ ├── styles/
-│ │ └── styles.css
-│ ├── index.html
-│ └── script.js
-│
-├── .env
-├── .gitignore
-├── package-lock.json
-├── package.json
-└── README.md
+│   ├── styles/
+│   │   └── styles.css             # Custom CSS styles
+│   ├── index.html                 # Main HTML file
+│   └── script.js                  # Frontend JavaScript logic
+├── .env                           # Environment variables
+├── .gitignore                     # Git ignore file
+├── package-lock.json              # Dependency lock file
+├── package.json                   # Project metadata and dependencies
+└── README.md                      # Project documentation
 
----
-Git Hub Link-https://github.com/narasimhaDln/RecipeApplication
-## ⚙️ Installation & Setup
 
-1️⃣ **Clone the repository**
+🔗 GitHub Repository
+RecipeApplication on GitHub
 
-```bash
+⚙️ Installation & Setup
+Follow these steps to set up and run the project locally.
+1. Clone the Repository
 git clone https://github.com/narasimhaDln/RecipeApplication
 cd RecipeApplication
-```
 
-2️⃣ Backend Setup
-
+2. Backend Setup
+Install dependencies and set up the server:
 cd backend
 npm install
 
-3️⃣ Setup Environment Variables (.env)
-
+3. Configure Environment Variables
+Create a .env file in the backend/ directory with the following:
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=yourpassword
-DB_NAME=recipe_db
+DB_NAME=recipe_management
 SPOONACULAR_API_KEY=your_api_key
 
-4️⃣ Run MySQL Schema
 
-mysql -u root -p recipe_db < schema.sql
+Replace yourpassword with your MySQL password.
+Obtain a Spoonacular API key from spoonacular.com/food-api.
+
+4. Set Up the MySQL Database
+Run the schema to create the database and tables:
+mysql -u root -p recipe_management < backend/schema.sql
+
+5. Start the Backend Server
+cd backend
+npm start
+
+The server will run on http://localhost:5000.
+6. Run the Frontend
+Open frontend/index.html in a browser or use a tool like Live Server (VS Code extension) for a better development experience:
+code frontend/index.html
 
 
-5️⃣ Start the Backend Server
-nodemon server.js
-
-6️⃣ Open the Frontend
-Simply open frontend/index.html in your browser or use Live Server.
-📡 API Endpoints (Brief Overview)
+📡 API Endpoints
 User
 
-POST /api/users/register → Register a new user
-
-POST /api/users/login → Login and receive JWT
-
-GET /api/users/profile → Get profile (Auth required)
-
-PUT /api/users/profile → Update profile (Auth required)
+POST /api/users/register: Register a new user.
+POST /api/users/login: Log in and receive a JWT token.
+GET /api/users/profile: Retrieve user profile (Auth required).
+PUT /api/users/profile: Update user profile (Auth required).
 
 Recipes
 
-GET /api/recipes/search → Search recipes
-
-GET /api/recipes/:id → Get recipe details (Auth required)
-
-POST /api/recipes/favorites → Add favorite
-
-DELETE /api/recipes/favorites/:id → Remove favorite
+GET /api/recipes/search: Search recipes with filters (e.g., cuisine, meal type).
+GET /api/recipes/:id: Get detailed recipe information (Auth required).
+POST /api/recipes/favorites: Add a recipe to favorites (Auth required).
+DELETE /api/recipes/favorites/:id: Remove a recipe from favorites (Auth required).
+POST /api/recipes/:id/image: Upload an image for a recipe (Auth required).
 
 Ratings
 
-POST /api/recipes/:id/ratings → Add rating
-
-GET /api/recipes/:id/ratings → Get ratings
+POST /api/recipes/:id/ratings: Submit a rating for a recipe (Auth required).
+GET /api/recipes/:id/ratings: Retrieve ratings for a recipe.
 
 Comments
 
-POST /api/recipes/:id/comments → Add comment
-
-GET /api/recipes/:id/comments → Get comments
+POST /api/recipes/:id/comments: Add a comment to a recipe (Auth required).
+GET /api/recipes/:id/comments: Retrieve comments for a recipe.
 
 Meal Planner
 
-POST /api/planner/add_recipe_to_meal_plan → Add recipe to plan
-
-GET /api/planner/get_meal_plan → Get meal plan
+POST /api/planner/add_recipe_to_meal_plan: Add a recipe to the meal plan (Auth required).
+GET /api/planner/get_meal_plan: Retrieve the user’s meal plan (Auth required).
 
 Shopping List
 
-POST /api/shopping/list → Generate shopping list
+POST /api/shopping/list: Generate a shopping list from recipe IDs (Auth required).
+GET /api/shopping/list: Retrieve the user’s shopping list (Auth required).
+PUT /api/shopping/list: Update shopping list items (e.g., mark as purchased, Auth required).
+DELETE /api/shopping/list: Clear the shopping list (Auth required).
 
-GET /api/shopping/list → Get shopping list
+
 💡 Future Enhancements
 
-User profile picture upload
+User Profile Picture Upload: Allow users to upload and manage profile images.
+AI-Based Recipe Recommendations: Implement machine learning for personalized recipe suggestions.
+Offline Caching with IndexedDB: Enable offline access to recipes and shopping lists.
+Social Sharing: Add functionality to share recipes on social media platforms.
 
-AI-based recipe recommendations
 
-Offline caching with IndexedDB
+🚀 Why This Project Stands Out
 
-Social sharing for recipes
+Scalable Architecture: Modular backend with separate controllers and routes for maintainability.
+Performance Optimization: In-memory caching reduces API calls to the Spoonacular API.
+User-Centric Design: Intuitive frontend with responsive design for all devices.
+Secure Authentication: JWT-based authentication ensures secure access to user-specific features.
+
+
+Built with ❤️ by narasimhaDln
