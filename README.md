@@ -85,13 +85,13 @@ RecipeApplication/
 └── README.md
 
 ---
-
+Git Hub Link-https://github.com/narasimhaDln/RecipeApplication
 ## ⚙️ Installation & Setup
 
 1️⃣ **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/RecipeApplication.git
+git clone https://github.com/narasimhaDln/RecipeApplication
 cd RecipeApplication
 ```
 
