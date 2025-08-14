@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
-
+import './config/db.config.js';
 // Import routes
 import userRoutes from './routes/user.routes.js';
 import recipeRoutes from './routes/recipe.routes.js';
