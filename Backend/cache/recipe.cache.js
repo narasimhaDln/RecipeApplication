@@ -1,6 +1,5 @@
-// Backend/config/cache.config.js
 import NodeCache from 'node-cache';
 
-const cache = new NodeCache({ stdTTL: 600 }); // Cache for 10 minutes
+const cache = new NodeCache({ stdTTL: 600 });
 
 export default cache;
